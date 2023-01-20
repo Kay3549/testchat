@@ -1,0 +1,32 @@
+{
+  "contents": [
+    {
+      "fromAt": "230119090000",
+      "message": "안녕하세요",
+      "messageType": "TEXT",
+      "roomId": "1",
+      "sender": "user"
+
+    },
+    {
+      "fromAt": "230119090010",
+      "message": "네, 안녕하세요",
+      "messageType": "TEXT",
+      "roomId": "2",
+      "sender": "상담원"
+    },
+    {
+      "fromAt": "230119090100",
+      "message": "궁금한게 있어요",
+      "messageType": "TEXT",
+      "roomId": 3,
+      "sender": "user"
+    }
+  ],
+  "createAt": "230119090000",
+  "endAt": "230119090500",
+  "lastMsgAt": "230119090455",
+  "members": "참여자 목록",
+  "onwerId": "Create Id(개설자 ID)",
+  "roomId": 1
+}
