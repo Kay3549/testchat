@@ -6,23 +6,20 @@ const Messages = () => {
 
   const [users, setuser] = useState([]);
     
-    useEffect(()=>{
-        axios.get('/데이터 목록(0119).json')
-        .then(res=>{ 
-            setuser(res.data);
-        })
-        
-    },[]); 
-
-  return (
-    <div className='messages'>
-
-        <Message users={users}></Message>
-        <Message users={users}></Message>
-        <Message users={users}></Message>
+  useEffect(()=>{
+      axios.get('/데이터 목록(0119).json')
+      .then(res=>{
+          setuser(res.data);
+      })
       
-    </div>
-  )
+  },[]); 
+
+      return (
+        <div className='messages'>
+            {/* <Message users={users}></Message> */}
+        </div>
+      )
+
 }
 
 export default Messages

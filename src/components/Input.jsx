@@ -13,7 +13,6 @@ const Input = () => {
           <img src={사진} alt=''></img>
         </label>
         <button>Send</button>
-
       </div>
     </div>
   )
