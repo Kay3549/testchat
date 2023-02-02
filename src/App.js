@@ -9,13 +9,14 @@ import "./style.scss";
 import * as StompJs from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { Stomp } from '@stomp/stompjs';
+import Messages from './components/Messages';
 
 function App() {
 
   
   return (
     <div className="App">
-      <Home></Home>
+     <Home></Home>
     </div>
   );
 }
