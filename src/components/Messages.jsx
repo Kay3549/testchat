@@ -48,7 +48,7 @@ const Messages = (props) => {
                 <div className="msg-bubble">
                   <div className="msg-info">
                     <div className="msg-info-time">{b}</div>
-                    <div className="msg-info-name">BOT</div>
+                    <div className="msg-info-name">BOsadfadfT</div>
                   </div>
 
                   <div className="msg-text">
