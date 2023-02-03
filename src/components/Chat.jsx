@@ -20,13 +20,15 @@ const Chat = () => {
   const [message, setMessage] = React.useState('');
   // const [roomId, setroomID] = useState([]);
   const roomId = '9104cde8-4ee9-4799-bdec-f24087269959';
-  let sockJS;
-  let stompClient;
+  const sockJS = new SockJS('http://192.168.1.209:8080/ws/chat');
+  const stompClient = Stomp.over(sockJS);;
 
-  const connect = () => {
-    
-    sockJS = new SockJS('http://192.168.1.209:8080/ws/chat');
-    stompClient = Stomp.over(sockJS);
+  const addMessage = (message) => {
+    setContents((prev) => [...prev, message]);
+  };
+
+  useEffect(() => {
+
     stompClient.connect({},
       (frame) => {
         stompClient.subscribe('/topic/room/' + roomId, (data) => {
@@ -40,22 +42,6 @@ const Chat = () => {
       (frame) => {
         console.log(frame);
       });
-
-  };
-
-
-  const addMessage = (message) => {
-    setContents((prev) => [...prev, message]);
-  };
-
-  useEffect(() => {
-    // axios.post('http://192.168.1.209:8080/api/v1/room/create')
-    //   .then(res => {
-    //     setuser(res.data);
-    //     setroomID(res.data.room.roomId);
-    //   });
-
-    connect();
 
   }, []);
 
@@ -79,7 +65,6 @@ const Chat = () => {
       <Messages></Messages> 
       <Input sendmessage={(msg) => {
         const messageContent = msg;
-        console.log(stompClient);
         if (stompClient) {  // Form 에서 보낼 데이터가 있다면
           // for (let index = 0; index < 10; index++) {
             const chatMessage = {  // MessageDto 형식
@@ -89,13 +74,14 @@ const Chat = () => {
             };
             stompClient.send('/app/chat/message/' + roomId, {}, JSON.stringify(chatMessage));
             //sleep(100);
-            setMessage(msg)
+            
             console.log("Send: " + JSON.stringify(chatMessage));
             
           // }
         }else{
           console.log("에러 err")
         }
+        setMessage(msg)
       }}></Input>
     </div>
   )
