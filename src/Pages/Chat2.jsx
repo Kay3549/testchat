@@ -21,7 +21,7 @@ const Chat = () => {
   };
   
   useEffect(() => {
-    <Messages msg = {message}></Messages>  
+    <Messages msg = {message}></Messages>   
   }, [message]);
 
   useEffect(() => {
