@@ -9,21 +9,11 @@ import Header from "../components/Header";
 import Footer from '../components/Footer';
 import Messages from '../components/Messages';
 
-//https://ordinarycoders.com/blog/article/react-chakra-ui
 const roomId = '031219df-70e7-4eb6-acc6-acbda0bbc1cc';
 let sockJS = new SockJS('http://192.168.1.209:8080/ws/chat');
 let stompClient =Stomp.over(sockJS);;
 
-
-// const connect = () => {
-
- 
-// }
-
-
 const Chat = () => {
-
-  const { roomid } = useParams();
 
   const [message, setMessage] = useState('');
   const addMessage = (message) => {
@@ -31,7 +21,7 @@ const Chat = () => {
   };
   
   useEffect(() => {
-    <Messages msg = {message}></Messages> 
+    <Messages msg = {message}></Messages>  
   }, [message]);
 
   useEffect(() => {
@@ -66,7 +56,7 @@ const Chat = () => {
             const chatMessage = {  // MessageDto 형식
               messageType: "TEXT",
               message: msg,  // Text 박스에 들어온 데이터
-              sender: "Client",
+              sender: "Clientfd",
             };
             stompClient.send('/app/chat/message/' + roomId, {}, JSON.stringify(chatMessage));
             //sleep(100);

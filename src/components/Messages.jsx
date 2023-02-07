@@ -42,14 +42,14 @@ const Messages = (props) => {
               <div key={index} className={right.align}>
 
                 <div className="msg-bubble">
-                  <div className="msg-info">
-                    <div className="msg-info-time">{b}</div>
-                    <div className="msg-info-name">BOsadfadfT</div>
-                  </div>
-
                   <div className="msg-text">
                     {item.message}
                   </div>
+
+                  <div className="msg-info">
+                    <div className="msg-info-time">{b}</div>
+                  </div>
+
                 </div>
               </div>
 
@@ -62,14 +62,13 @@ const Messages = (props) => {
               <div key={index} className={left.align}>
 
                 <div className="msg-bubble">
-                  <div className="msg-info">
-                    <div className="msg-info-name">BOT</div>
-                    <div className="msg-info-time">{b}</div>
-                  </div>
-
                   <div className="msg-text">
                     {item.message}
                   </div>
+                  <div className="msg-info left">
+                    <div className="msg-info-time">{b}</div>
+                  </div>
+
                 </div>
               </div>
             )
