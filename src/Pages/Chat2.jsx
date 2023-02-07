@@ -11,24 +11,14 @@ import Messages from '../components/Messages';
 
 //https://ordinarycoders.com/blog/article/react-chakra-ui
 const roomId = '031219df-70e7-4eb6-acc6-acbda0bbc1cc';
-let sockJS
-let stompClient
+let sockJS = new SockJS('http://192.168.1.209:8080/ws/chat');
+let stompClient =Stomp.over(sockJS);;
 
-const connect = () => {
 
-  sockJS = new SockJS('http://192.168.1.209:8080/ws/chat');
-  stompClient = Stomp.over(sockJS);;
-  stompClient.connect({},
-    (frame) => {
-      stompClient.subscribe('/topic/room/' + roomId, (data) => {
-        const newMessage = JSON.parse(data.body);
-      }, { id: "msg" });
-      console.log(frame);
-    },
-    (frame) => {
-      console.log(frame);
-    });
-}
+// const connect = () => {
+
+ 
+// }
 
 
 const Chat = () => {
@@ -45,7 +35,18 @@ const Chat = () => {
   }, [message]);
 
   useEffect(() => {
-    connect();
+
+    stompClient.connect({},
+      (frame) => {
+        stompClient.subscribe('/topic/room/' + roomId, (data) => {
+          const newMessage = JSON.parse(data.body);
+          addMessage(newMessage.message);
+        }, { id: "msg" });
+        console.log(frame);
+      },
+      (frame) => {
+        console.log(frame);
+      });
 
   }, []);
 
@@ -76,7 +77,7 @@ const Chat = () => {
           } else {
             console.log("에러 err")
           }
-          addMessage(msg);
+          
         }}></Footer>
 
       </section>

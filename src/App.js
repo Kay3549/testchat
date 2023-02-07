@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Chat from './pages/Chat';
 import Chat2 from './pages/Chat2';
 
 function App() {
@@ -11,9 +10,6 @@ function App() {
       </header>
       <BrowserRouter>
         <Routes>
-          <Route path="/service/chat/*" element={<Chat></Chat>}>
-            <Route path=":roomid" element={<Chat />} />
-          </Route>
           <Route path="/service/chat2/*" element={<Chat2 />}>
             <Route path=":roomid" element={<Chat2 />} />
           </Route>

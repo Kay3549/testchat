@@ -7,6 +7,8 @@ const Messages = (props) => {
   const [users, setuser] = useState([]);
   const msg = props.msg;
 
+  console.log(msg)
+
   useEffect(() => {
     axios.get('http://192.168.1.209:8080/api/v1/message/recv/031219df-70e7-4eb6-acc6-acbda0bbc1cc')
       .then(res => {
@@ -16,12 +18,10 @@ const Messages = (props) => {
 
   const left = {
     align: 'msg left-msg',
-    bgimg: { backgroundImage: 'url(https://image.flaticon.com/icons/svg/327/327779.svg)' }
   };
 
   const right = {
     align: 'msg right-msg',
-    bgimg: { backgroundImage: 'url(https://image.flaticon.com/icons/svg/145/145867.svg)' }
   }
 
 
@@ -40,10 +40,6 @@ const Messages = (props) => {
             //오른쪽
             return (
               <div key={index} className={right.align}>
-                <div
-                  className="msg-img"
-                  style={right.bgimg}
-                ></div>
 
                 <div className="msg-bubble">
                   <div className="msg-info">
@@ -64,10 +60,6 @@ const Messages = (props) => {
             //왼쪽에
             return (
               <div key={index} className={left.align}>
-                <div
-                  className="msg-img"
-                  style={left.bgimg}
-                ></div>
 
                 <div className="msg-bubble">
                   <div className="msg-info">
